@@ -7,7 +7,7 @@ Supported throttle / debounce / sequential transformer's and delay async funciti
 ## Installation
 
 ```sh
-$ npm install throttleit
+$ npm install async-func-decorators
 ```
 
 ## Example
