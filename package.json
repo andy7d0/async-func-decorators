@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": ".",
   "author": "andy7d0",
-  "license": "MIT"
+  "license": "MIT",
   
   "homepage": "https://github.com/andy7d0/async-func-decorators",
   "bugs": "https://github.com/andy7d0/async-func-decorators/issues",

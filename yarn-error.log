@@ -1,0 +1,46 @@
+Arguments: 
+  /usr/bin/node /usr/bin/yarn login
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+Yarn version: 
+  1.19.1
+
+Node version: 
+  12.13.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/andy/projects/async-func-decorators/package.json: Unexpected string in JSON at position 240
+      at JSON.parse (<anonymous>)
+      at /usr/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/lib/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "async-func-decorators",
+    "version": "1.0.0",
+    "description": "throttle/debounce/sequential decorators for async functions / promices",
+    "main": "index.js",
+    "repository": ".",
+    "author": "andy7d0",
+    "license": "MIT"
+    
+    "homepage": "https://github.com/andy7d0/async-func-decorators",
+    "bugs": "https://github.com/andy7d0/async-func-decorators/issues",
+    "repository": {
+      "url": "https://github.com/andy7d0/async-func-decorators",
+      "type": "git"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
