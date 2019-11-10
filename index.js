@@ -1,6 +1,12 @@
 'use strict';
 
-export const serial = function(asyncFunc) {
+const timeout = delay =>
+	 new Promise((resolve, reject) => setTimeout(resolve, delay))
+;
+
+module.exports = {
+
+serial: function(asyncFunc) {
 	let executed = Promise.resolve(null);
 	return function(...args) {
 		return executed = executed.then(
@@ -10,12 +16,12 @@ export const serial = function(asyncFunc) {
 		)
 	}
 }
+,
 
-export const timeout = delay =>
-	 new Promice((resolve, reject) => setTimeout(resolve, delay))
+timeout: timeout
+,
 
-
-export const debounce = function(delay, asyncFunc) {
+debounce: function(delay, asyncFunc) {
 	let pending = null;
 	return function(...args) {
 		if(pending) return pending;
@@ -25,8 +31,9 @@ export const debounce = function(delay, asyncFunc) {
 			.finally(() => {pending = null})
 	}
 }
+,
 
-export const throttle = function(delay, asyncFunc) {
+throttle: function(delay, asyncFunc) {
 	let started = null;
 	return function (...args) {
 		if(started) return started;
@@ -36,4 +43,7 @@ export const throttle = function(delay, asyncFunc) {
 		.finally(() => {started = null})
 	}
 }
+
+}
+
 
