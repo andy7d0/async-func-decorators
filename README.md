@@ -40,7 +40,7 @@ Perform leading (as soon as possible) invocation.
 
 wrapped function returns Promise (i.e. it's an async function)
 
-if some invocations delayed they are replaced with last one and all of them shere the same return value 
+if some invocations delayed they are replaced with last one and all of them share same return value 
 
 ### debounce(wait, fn)
 
@@ -56,7 +56,7 @@ and call `fn` strictly after it if there is such invocation(s)
 
 wrapped function returns Promise (i.e. it's an async function)
 
-if some invocations delayed they are replaced with last one and all of them shere the same return value 
+if some invocations delayed they are replaced with last one and all of them share same return value 
 
 ### serial(fn)
 
