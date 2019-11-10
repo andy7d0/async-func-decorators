@@ -1,13 +1,15 @@
 'use strict';
 
 const timeout = delay =>
+	 delay ?
 	 new Promise((resolve, reject) => setTimeout(resolve, delay))
+	 : Promise.resolve()
 ;
 
 module.exports = {
 
 serial: function(asyncFunc) {
-	let executed = Promise.resolve(null);
+	let executed = Promise.resolve();
 	return function(...args) {
 		return executed = executed.catch(()=>null)
 			.then(

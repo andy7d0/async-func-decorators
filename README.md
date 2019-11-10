@@ -38,6 +38,10 @@ Perform leading (as soon as possible) invocation.
 
 `fn` will receive last context (`this`) and last arguments passed to a throttled wrapper before `fn` was invoked.
 
+wrapped function returns Promise (i.e. it's an async function)
+
+if some invocations delayed they are replaced with last one and all of them shere the same return value 
+
 ### debounce(wait, fn)
 
 Creates a function that will call `fn` at most once every `wait` milliseconds.
@@ -45,6 +49,14 @@ Creates a function that will call `fn` at most once every `wait` milliseconds.
 Perform trailing (at time window's end) invocation.
 
 `fn` will receive last context (`this`) and last arguments passed to a debounced wrapper before `fn` was invoked.
+
+debounce(0, `fn`) return function that skip all invocation while previous one in progress 
+
+and call `fn` strictly after it if there is such invocation(s)
+
+wrapped function returns Promise (i.e. it's an async function)
+
+if some invocations delayed they are replaced with last one and all of them shere the same return value 
 
 ### serial(fn)
 
