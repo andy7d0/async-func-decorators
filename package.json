@@ -1,16 +1,14 @@
 {
   "name": "async-func-decorators",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "throttle/debounce/sequential decorators for async functions / promices",
   "main": "index.js",
-  "repository": ".",
-  "author": "andy7d0",
-  "license": "MIT",
-  
-  "homepage": "https://github.com/andy7d0/async-func-decorators",
-  "bugs": "https://github.com/andy7d0/async-func-decorators/issues",
   "repository": {
     "url": "https://github.com/andy7d0/async-func-decorators",
     "type": "git"
-  }
+  },
+  "author": "andy7d0",
+  "license": "MIT",
+  "homepage": "https://github.com/andy7d0/async-func-decorators",
+  "bugs": "https://github.com/andy7d0/async-func-decorators/issues"
 }

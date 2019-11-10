@@ -9,38 +9,61 @@ module.exports = {
 serial: function(asyncFunc) {
 	let executed = Promise.resolve(null);
 	return function(...args) {
-		return executed = executed.then(
-			() => (asyncFunc.apply(this,args))
-			,
-			() => (asyncFunc.apply(this,args))
-		)
+		return executed = executed.catch(()=>null)
+			.then(
+				() => (asyncFunc.apply(this,args))
+			)
 	}
 }
 ,
 
-timeout: timeout
+delay: timeout
 ,
 
 debounce: function(delay, asyncFunc) {
 	let pending = null;
+	let last = null;
 	return function(...args) {
+		last = { context: this, args: args }
 		if(pending) return pending;
 		return pending = 
 			timeout(delay)
-			.then(() => asyncFunc.apply(this, args))
+			.then(() => asyncFunc.apply(last.context, last.args))
 			.finally(() => {pending = null})
 	}
 }
 ,
 
 throttle: function(delay, asyncFunc) {
-	let started = null;
-	return function (...args) {
-		if(started) return started;
-		started = asyncFunc.apply(this, args)
-		Promise.allSettled([started, timeout(delay)])
+	const timed = (ctx, args) =>
+		Promise.allSettled([
+			asyncFunc.apply(ctx, args)
+			, timeout(delay)
+		])
 		.then( (res) => res[0] )
-		.finally(() => {started = null})
+		;
+	let started = null;
+	let last = null;
+	let pended = null
+	return function (...args) {
+		if(started) {
+			last = { context: this, args: args }
+			if(!pended) 
+				pended = started.finally(
+					() => {
+					  started = pended;
+					  pended = null;
+					})
+					.catch(()=>null)
+					.then( 
+					  ()=> timed(last.context, last.args)
+					)
+			return pended;
+		}
+		return started = timed(this, args)
+			.finally(() => {
+				started = null;
+			})
 	}
 }
 
